@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercaglobalguate - Soluciones Visuales Profesionales</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --azul-principal: #1E3A8A;
+            --azul-secundario: #3730A3;
+            --verde-accent: #10B981;
+            --verde-hover: #059669;
+            --dorado: #F59E0B;
+            --gris-oscuro: #374151;
+            --gris-medio: #6B7280;
+            --gris-claro: #F8FAFC;
+            --blanco: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--gris-oscuro);
+            background-color: var(--gris-claro);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-secundario) 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            padding: 0.7rem 0;
+            background: var(--azul-principal);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--blanco);
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--verde-accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--verde-accent);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--verde-accent);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--blanco);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(55, 48, 163, 0.9)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--blanco);
+            padding: 180px 0 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--verde-accent);
+            color: var(--blanco);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            background: var(--verde-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
+        }
+
+        /* SERVICIOS */
+        .servicios {
+            padding: 100px 0;
+            background: var(--blanco);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--azul-principal);
+            margin-bottom: 1rem;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .section-title.animated h2 {
+            animation: titlePulse 0.6s ease;
+        }
+
+        @keyframes titlePulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--verde-accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gris-medio);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .servicio-card {
+            background: var(--blanco);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #E5E7EB;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .servicio-card.animated {
+            animation: cardSlideUp 0.8s ease forwards;
+        }
+
+        @keyframes cardSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .servicio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, var(--azul-principal), var(--verde-accent));
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        .servicio-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--azul-principal);
+            transition: all 0.5s ease;
+        }
+
+        .servicio-card.animated .servicio-icon {
+            animation: iconBounce 0.8s ease;
+        }
+
+        @keyframes iconBounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .servicio-card h3 {
+            color: var(--azul-principal);
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+            transition: all 0.5s ease;
+        }
+
+        .servicio-card.animated h3 {
+            animation: textPulse 0.6s ease 0.3s;
+        }
+
+        @keyframes textPulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .servicio-card p {
+            color: var(--gris-medio);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        /* PORTAFOLIO */
+        .portafolio {
+            padding: 100px 0;
+            background: var(--gris-claro);
+        }
+
+        .portafolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portafolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .portafolio-item.animated {
+            animation: cardSlideUp 0.8s ease forwards;
+        }
+
+        .portafolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .portafolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .portafolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portafolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(30, 58, 138, 0.9));
+            padding: 2rem;
+            color: var(--blanco);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .portafolio-item:hover .portafolio-overlay {
+            transform: translateY(0);
+        }
+
+        /* NOSOTROS */
+        .nosotros {
+            padding: 100px 0;
+            background: var(--blanco);
+        }
+
+        .nosotros-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .nosotros-text h2 {
+            color: var(--azul-principal);
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            transition: all 0.5s ease;
+        }
+
+        .nosotros-text.animated h2 {
+            animation: titlePulse 0.6s ease;
+        }
+
+        .nosotros-text p {
+            color: var(--gris-medio);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .nosotros-text.animated p {
+            animation: textSlideIn 0.8s ease forwards;
+        }
+
+        @keyframes textSlideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .nosotros-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .nosotros-stats.animated .stat-item {
+            animation: cardSlideUp 0.8s ease forwards;
+        }
+
+        .nosotros-stats.animated .stat-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        .nosotros-stats.animated .stat-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .nosotros-stats.animated .stat-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--azul-principal);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--gris-medio);
+            font-size: 0.9rem;
+        }
+
+        /* CONTACTO */
+        .contacto {
+            padding: 100px 0;
+            background: var(--gris-claro);
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+        }
+
+        .contacto-info {
+            background: var(--azul-principal);
+            padding: 3rem;
+            border-radius: 20px;
+            color: var(--blanco);
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .contacto-info.animated {
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .contacto-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--verde-accent);
+        }
+
+        .contacto-form {
+            background: var(--blanco);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .contacto-form.animated {
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gris-oscuro);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E5E7EB;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--verde-accent);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--azul-principal);
+            color: var(--blanco);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--verde-accent);
+        }
+
+        .footer-section p, .footer-section li {
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--blanco);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--verde-accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--azul-principal);
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nosotros-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contacto-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .servicios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nosotros-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Mercaglobal<span>guate</span></a>
+            <button class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#portafolio">Portafolio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h1>Construimos Marcas que Inspiran</h1>
+            <p>Soluciones visuales profesionales que transforman tu presencia en el mercado y conectan emocionalmente con tu audiencia</p>
+            <a href="#contacto" class="cta-button">Comenzar Proyecto</a>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="servicios" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Ofrecemos soluciones completas para potenciar tu marca y hacerla destacar en el mercado competitivo</p>
+            </div>
+            <div class="servicios-grid">
+                <div class="servicio-card">
+                    <div class="servicio-icon">🎥</div>
+                    <h3>Videos Corporativos</h3>
+                    <p>Producción de videos de alta calidad que comunican la esencia de tu empresa, cuentan tu historia y conectan emocionalmente con tu audiencia objetivo.</p>
+                    <a href="#contacto" class="cta-button" style="padding: 12px 30px; font-size: 1rem;">Cotizar Proyecto</a>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-icon">📺</div>
+                    <h3>Spots Publicitarios</h3>
+                    <p>Creación de comerciales impactantes para radio y televisión que generan recordación de marca y aumentan el reconocimiento de tu empresa.</p>
+                    <a href="#contacto" class="cta-button" style="padding: 12px 30px; font-size: 1rem;">Cotizar Proyecto</a>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-icon">🎨</div>
+                    <h3>Identidad Visual</h3>
+                    <p>Diseño de logos, manuales de marca y elementos visuales que proyectan profesionalismo, confianza y consistencia en todos los puntos de contacto.</p>
+                    <a href="#contacto" class="cta-button" style="padding: 12px 30px; font-size: 1rem;">Cotizar Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTAFOLIO -->
+    <section class="portafolio" id="portafolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Portafolio</h2>
+                <p>Descubre algunos de nuestros proyectos más destacados y el impacto que creamos para nuestros clientes</p>
+            </div>
+            <div class="portafolio-grid">
+                <div class="portafolio-item">
+                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Video Corporativo">
+                    <div class="portafolio-overlay">
+                        <h3>Video Corporativo</h3>
+                        <p>Empresa de Tecnología</p>
+                    </div>
+                </div>
+                <div class="portafolio-item">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Spot Publicitario">
+                    <div class="portafolio-overlay">
+                        <h3>Spot Televisivo</h3>
+                        <p>Campaña Nacional</p>
+                    </div>
+                </div>
+                <div class="portafolio-item">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Diseño de Logo">
+                    <div class="portafolio-overlay">
+                        <h3>Identidad de Marca</h3>
+                        <p>Startup Financiera</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section class="nosotros" id="nosotros">
+        <div class="container">
+            <div class="nosotros-content">
+                <div class="nosotros-text">
+                    <h2>Quiénes Somos</h2>
+                    <p>En Mercaglobalguate somos un equipo de profesionales apasionados por la creación de soluciones visuales impactantes. Con más de 20 años de experiencia en el mercado, nos especializamos en transformar ideas en experiencias visuales memorables.</p>
+                    <p>Nuestra misión es ayudar a las empresas a comunicar su esencia de manera efectiva, construyendo marcas sólidas que generen conexiones emocionales con su audiencia.</p>
+                    <div class="nosotros-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">200+</span>
+                            <span class="stat-label">Proyectos Completados</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">20+</span>
+                            <span class="stat-label">Años de Experiencia</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Clientes Satisfechos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="nosotros-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Equipo Mercaglobalguate" style="width: 100%; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contacto" id="contacto">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contáctanos</h2>
+                <p>¿Listo para transformar tu marca? Escríbenos y hagamos realidad tu proyecto</p>
+            </div>
+            <div class="contacto-grid">
+                <div class="contacto-info">
+                    <h3>Información de Contacto</h3>
+                    <div class="contacto-item">
+                        <div class="contacto-icon">📞</div>
+                        <div>
+                            <strong>Teléfono</strong><br>
+                            4012-2351
+                        </div>
+                    </div>
+                    <div class="contacto-item">
+                        <div class="contacto-icon">📧</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            mercaglobalguate@gmail.com
+                        </div>
+                    </div>
+                    <div class="contacto-item">
+                        <div class="contacto-icon">📍</div>
+                        <div>
+                            <strong>Ubicación</strong><br>
+                            Guatemala City, Guatemala
+                        </div>
+                    </div>
+                    <div class="contacto-item">
+                        <div class="contacto-icon">🕒</div>
+                        <div>
+                            <strong>Horario</strong><br>
+                            Lun-Vie: 8:00 - 18:00
+                        </div>
+                    </div>
+                </div>
+                <div class="contacto-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono">
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Servicio de Interés</label>
+                            <select id="servicio" name="servicio" style="width: 100%; padding: 12px 15px; border: 2px solid #E5E7EB; border-radius: 10px; font-size: 1rem;">
+                                <option value="">Seleccionar servicio</option>
+                                <option value="video">Videos Corporativos</option>
+                                <option value="spots">Spots Publicitarios</option>
+                                <option value="diseno">Diseño de Identidad</option>
+                                <option value="multiple">Múltiples Servicios</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mercaglobalguate</h3>
+                    <p>Soluciones visuales profesionales para empresas que buscan destacar en el mercado competitivo actual.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <ul style="list-style: none;">
+                        <li>Videos Corporativos</li>
+                        <li>Spots Publicitarios</li>
+                        <li>Diseño de Identidad Visual</li>
+                        <li>Branding Estratégico</li>
+                        <li>Producción Audiovisual</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#inicio" style="color: white; text-decoration: none;">Inicio</a></li>
+                        <li><a href="#servicios" style="color: white; text-decoration: none;">Servicios</a></li>
+                        <li><a href="#portafolio" style="color: white; text-decoration: none;">Portafolio</a></li>
+                        <li><a href="#nosotros" style="color: white; text-decoration: none;">Nosotros</a></li>
+                        <li><a href="#contacto" style="color: white; text-decoration: none;">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mercaglobalguate. Todos los derechos reservados. | Diseñado con ❤️ para marcas exitosas</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Smooth scroll para navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Cerrar menú móvil si está abierto
+                    document.querySelector('.nav-menu').classList.remove('active');
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+            this.reset();
+        });
+
+        // Animaciones al hacer scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Para la sección de servicios
+                    if (entry.target.id === 'servicios') {
+                        const sectionTitle = entry.target.querySelector('.section-title');
+                        const serviceCards = entry.target.querySelectorAll('.servicio-card');
+                        
+                        sectionTitle.classList.add('animated');
+                        
+                        serviceCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('animated');
+                            }, index * 200);
+                        });
+                    }
+                    
+                    // Para la sección de portafolio
+                    if (entry.target.id === 'portafolio') {
+                        const portfolioItems = entry.target.querySelectorAll('.portafolio-item');
+                        
+                        portfolioItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('animated');
+                            }, index * 200);
+                        });
+                    }
+                    
+                    // Para la sección de nosotros
+                    if (entry.target.id === 'nosotros') {
+                        const nosotrosText = entry.target.querySelector('.nosotros-text');
+                        const nosotrosStats = entry.target.querySelector('.nosotros-stats');
+                        
+                        nosotrosText.classList.add('animated');
+                        setTimeout(() => {
+                            nosotrosStats.classList.add('animated');
+                        }, 300);
+                    }
+                    
+                    // Para la sección de contacto
+                    if (entry.target.id === 'contacto') {
+                        const contactoInfo = entry.target.querySelector('.contacto-info');
+                        const contactoForm = entry.target.querySelector('.contacto-form');
+                        
+                        contactoInfo.classList.add('animated');
+                        contactoForm.classList.add('animated');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observar todas las secciones principales
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Efecto de rebote para los títulos de sección cuando son clickeados desde el menú
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection && targetSection.querySelector('.section-title')) {
+                    const sectionTitle = targetSection.querySelector('.section-title');
+                    sectionTitle.classList.remove('animated');
+                    setTimeout(() => {
+                        sectionTitle.classList.add('animated');
+                    }, 100);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
